@@ -110,7 +110,7 @@
 #define USE_WINCONSOLE
 #ifdef __MINGW32__
 #define HAVE_UNISTD_H
-#else
+#elif defined(_MSC_VER) && _MSC_VER < 1900
 /* Microsoft headers don't like old POSIX names */
 #define strdup _strdup
 #define snprintf _snprintf
