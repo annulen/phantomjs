@@ -116,10 +116,12 @@ init_crash_handler_os()
                  SEM_NOOPENFILEERRORBOX);
     SetUnhandledExceptionFilter(unhandled_exception_filter);
 
+#if defined(_MSC_VER)
     // When the app crashes, don't print the abort message
     // and don't call Dr. Watson to make a crash dump.
     // http://msdn.microsoft.com/en-us/library/e631wekh(v=VS.100).aspx
     _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
+#endif
 
 
 #if _MSC_VER >= 1400
